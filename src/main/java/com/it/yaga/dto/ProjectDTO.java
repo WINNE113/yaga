@@ -3,9 +3,9 @@ package com.it.yaga.dto;
 import java.time.LocalDate;
 
 public class ProjectDTO {
-    private Long projectId;
+    private int projectId;
     private String projectNm;
-    private Long deptId;
+    private Integer deptId;
     private String deptNm;
     private Character difficulty;
     private LocalDate insTm;
@@ -15,7 +15,7 @@ public class ProjectDTO {
 
     public ProjectDTO(){}
     // Constructor
-    public ProjectDTO(Long projectId, String projectNm, String deptNm, Character difficulty, LocalDate insTm, LocalDate updTm, Integer version) {
+    public ProjectDTO(int projectId, String projectNm, String deptNm, Character difficulty, LocalDate insTm, LocalDate updTm, Integer version) {
         this.projectId = projectId;
         this.projectNm = projectNm;
         this.deptNm = deptNm;
@@ -25,19 +25,19 @@ public class ProjectDTO {
         this.version = version;
     }
 
-    public Long getDeptId() {
+    public Integer getDeptId() {
         return deptId;
     }
 
-    public void setDeptId(Long deptId) {
+    public void setDeptId(Integer deptId) {
         this.deptId = deptId;
     }
 
-    public Long getProjectId() {
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(Long projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 

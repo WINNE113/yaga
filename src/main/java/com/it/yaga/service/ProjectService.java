@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 
 public interface ProjectService {
     Page<Project> searchProjects(String projectNm, int page, int size);
-    Page<Project> searchProjects(String projectNm, Long deptId, Character difficulty, int page, int size);
+    Page<Project> searchProjects(String projectNm, Integer deptId, Character difficulty, int page, int size);
 
     ProjectDTO convertEntityToDto(Project project);
 }

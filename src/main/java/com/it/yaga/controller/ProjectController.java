@@ -28,7 +28,7 @@ public class ProjectController {
     @GetMapping
     public String listProjects(Model model,
                                @RequestParam(required = false) String keyword,
-                               @RequestParam(required = false) Long deptId,
+                               @RequestParam(required = false) Integer deptId,
                                @RequestParam(required = false) Character difficulty,
                                @RequestParam(defaultValue = "0") int page,
                                @RequestParam(defaultValue = "5") int size) {
@@ -61,25 +61,25 @@ public class ProjectController {
     }
 
     // Xác nhận tạo mới
-    @PostMapping("/confirm")
-    public String confirmCreate(@ModelAttribute("projectDTO") ProjectDTO projectDTO, Model model) {
-        String deptNm = deptRepository.findById(projectDTO.getDeptId()).get().getDeptNm();
-        model.addAttribute("deptNm", deptNm);
-        return "confirm-create";
-    }
-
-    // Lưu vào database
-    @PostMapping("/save")
-    public String saveProject(@ModelAttribute("projectDTO") ProjectDTO projectDTO) {
-        Project project = new Project();
-        project.setProjectNm(projectDTO.getProjectNm());
-        project.setDept(deptRepository.findById(projectDTO.getDeptId()).get());
-        project.setDifficulty(projectDTO.getDifficulty());
-        project.setInsTm(LocalDate.now());
-        project.setUpdTm(LocalDate.now());
-        project.setVersion(1);
-
-     //   projectService.saveProject(project);
-        return "redirect:/projects";
-    }
+//    @PostMapping("/confirm")
+//    public String confirmCreate(@ModelAttribute("projectDTO") ProjectDTO projectDTO, Model model) {
+//        String deptNm = deptRepository.findById(projectDTO.getDeptId()).get().getDeptNm();
+//        model.addAttribute("deptNm", deptNm);
+//        return "confirm-create";
+//    }
+//
+//    // Lưu vào database
+//    @PostMapping("/save")
+//    public String saveProject(@ModelAttribute("projectDTO") ProjectDTO projectDTO) {
+//        Project project = new Project();
+//        project.setProjectNm(projectDTO.getProjectNm());
+//        project.setDept(deptRepository.findById(projectDTO.getDeptId()).get());
+//        project.setDifficulty(projectDTO.getDifficulty());
+//        project.setInsTm(LocalDate.now());
+//        project.setUpdTm(LocalDate.now());
+//        project.setVersion(1);
+//
+//     //   projectService.saveProject(project);
+//        return "redirect:/projects";
+//    }
 }

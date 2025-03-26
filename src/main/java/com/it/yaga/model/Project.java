@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long projectId;
+    private int projectId;
 
     private String projectNm;
 
@@ -43,11 +43,11 @@ public class Project {
         this.version += 1;
     }
 
-    public Long getProjectId() {
+    public int getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(Long projectId) {
+    public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
 

@@ -12,15 +12,15 @@ import lombok.*;
 public class Dept {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long deptId;
+    private int deptId;
 
     private String deptNm;
 
-    public Long getDeptId() {
+    public int getDeptId() {
         return deptId;
     }
 
-    public void setDeptId(Long deptId) {
+    public void setDeptId(int deptId) {
         this.deptId = deptId;
     }
 

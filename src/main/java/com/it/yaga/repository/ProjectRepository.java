@@ -10,12 +10,19 @@ import org.springframework.data.repository.query.Param;
 public interface ProjectRepository extends JpaRepository<Project, Long> {
     Page<Project> findByProjectNmContaining(String projectNm, Pageable pageable);
 
-    @Query("SELECT p FROM Project p WHERE " +
-            "(:projectNm IS NULL OR p.projectNm LIKE %:projectNm%) AND " +
-            "(:deptId IS NULL OR p.dept.deptId = :deptId) AND " +
-            "(:difficulty IS NULL OR p.difficulty = :difficulty)")
+    @Query(value = "SELECT * FROM project p WHERE " +
+            "(:projectNm IS NULL OR p.project_nm LIKE CONCAT('%', :projectNm, '%')) AND " +
+            "(:deptId IS NULL OR p.dept_id = :deptId) AND " +
+            "(:difficulty IS NULL OR p.difficulty = :difficulty)",
+            countQuery = "SELECT COUNT(*) FROM project p WHERE " +
+                    "(:projectNm IS NULL OR p.project_nm LIKE CONCAT('%', :projectNm, '%')) AND " +
+                    "(:deptId IS NULL OR p.dept_id = :deptId) AND " +
+                    "(:difficulty IS NULL OR p.difficulty = :difficulty)",
+            nativeQuery = true)
     Page<Project> searchProjects(@Param("projectNm") String projectNm,
-                                 @Param("deptId") Long deptId,
+                                 @Param("deptId") Integer deptId,  // Dùng Integer thay vì int
                                  @Param("difficulty") Character difficulty,
                                  Pageable pageable);
+
+
 }

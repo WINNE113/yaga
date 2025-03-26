@@ -22,7 +22,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Page<Project> searchProjects(String projectNm, Long deptId, Character difficulty, int page, int size) {
+    public Page<Project> searchProjects(String projectNm, Integer deptId, Character difficulty, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         return projectRepository.searchProjects(projectNm, deptId, difficulty, pageable);
     }
